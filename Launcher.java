@@ -29,6 +29,18 @@ public class Launcher {
         if (myList.size() == myList.capacity()) {
             System.out.println("And again!");
         }
+        
+        
+        System.out.println();
+        System.out.println();
+        GenAList myGenList = new GenAList<String>(5);
+        myGenList.addLast("Hola");
+        myGenList.addLast("Munda");
+        for (int i = 0; i < myGenList.size(); i++) {
+            System.out.println(myGenList.get(i));
+        }
+
+
 
         
     }
