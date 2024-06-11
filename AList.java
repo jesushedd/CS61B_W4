@@ -26,13 +26,18 @@ public class AList {
         capacity = items.length;
     }
 
+    /*Helper method for resizing array */
+    private void resize(int newCapacity){
+        int[] moreItems = new int[newCapacity];
+        System.arraycopy(items, 0, moreItems, 0, size);
+        items = moreItems;
+        updateCapacity();  
+    }
+
     /*Inserts   X into the back of the list */
     public void addLast(int x){
         if (size == items.length){
-            int[] moreItems = new int[size + 1];
-            System.arraycopy(items, 0, moreItems, 0, size);
-            items = moreItems;
-            updateCapacity();
+            resize(size + 1);
         }
         items[size] = x;
         size += 1;
