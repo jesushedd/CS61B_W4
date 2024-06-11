@@ -11,8 +11,8 @@ public class AList {
 
     /*Creates an empty list */
     public AList(int cap){
-        capacity = cap;
-        items = new int[capacity];
+        items = new int[cap];
+        updateCapacity();
         size = 0;
     }
 
@@ -21,13 +21,18 @@ public class AList {
         return capacity;
     }
 
+    /*Update capacity */
+    private void updateCapacity(){
+        capacity = items.length;
+    }
+
     /*Inserts   X into the back of the list */
     public void addLast(int x){
         if (size == items.length){
             int[] moreItems = new int[size + 1];
             System.arraycopy(items, 0, moreItems, 0, size);
             items = moreItems;
-            return;
+            updateCapacity();
         }
         items[size] = x;
         size += 1;
