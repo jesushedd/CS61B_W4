@@ -1,6 +1,7 @@
 public class AList {
     private int size;
     private int[] items;
+    private int capacity;
 
     /*  Invariants
      * addLast: The next item we want to add, will go into position size
@@ -9,9 +10,15 @@ public class AList {
      */
 
     /*Creates an empty list */
-    public AList(){
-        items = new int[100];
+    public AList(int cap){
+        capacity = cap;
+        items = new int[capacity];
         size = 0;
+    }
+
+    /*Get capacity of list */
+    public int capacity(){
+        return capacity;
     }
 
     /*Inserts   X into the back of the list */
