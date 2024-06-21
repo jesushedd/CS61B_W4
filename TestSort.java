@@ -1,5 +1,11 @@
+import org.junit.Test;
+import  static org.junit.Assert.assertArrayEquals;
+
+
 public class TestSort {
-    public static void testSort(){
+
+    @Test
+    public void testSort(){
         String[] input = {"I", "have", "an", "egg"};
     
         String[] expected = {"an", "egg", "have", "I"};
@@ -10,11 +16,12 @@ public class TestSort {
          * System.out.println("Error! there seems  to  be a problem with  Sort.sort.");
         }*/
         //using jUnit
-        org.junit.Assert.assertArrayEquals(expected, input);
+        assertArrayEquals(expected, input);
     }
 
+    @Test
     /*Test the Sort.findSmallest method*/
-    public static void testFindSmallest(){
+    public void testFindSmallest(){
         String[] input = {"I", "have", "an", "egg"};
         int expected = 2;
         int actual = Sort.findSmallest(input, 0);
@@ -26,16 +33,11 @@ public class TestSort {
         org.junit.Assert.assertEquals(expected2, actual2);
     }
 
-    public  static  void testSwap(){
+    @Test
+    public    void testSwap(){
         String[] input = {"hola", "pam", "que", "haces"};
         String[] expected = {"haces", "pam", "que", "hola"};
         Sort.swap(input, 0, 3);
         org.junit.Assert.assertArrayEquals(expected,input);
-    }
-
-    public static void main(String[] args) {
-        //testFindSmallest();
-        testSort();
-        //testSwap();
     }
 }
