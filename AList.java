@@ -36,7 +36,7 @@ public class AList {
 
     /*Inserts   X into the back of the list */
     public void addLast(int x){
-        if (size == items.length){
+        if (size == capacity){
             resize(size + 1);
         }
         items[size] = x;
