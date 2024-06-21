@@ -1,13 +1,13 @@
-public class SLList {
-    private static class IntNode {
+public class SLList<Blob> {
+    private class StuffNode<Stuff>{
     
         /*Instance variables */
-        public int item;
-        public IntNode next;
+        public Stuff item;
+        public StuffNode<Blob> next;
         
         
         /*Constructor for IntNode */
-        private IntNode(int i, IntNode r){
+        public StuffNode(Stuff i, StuffNode<Blob> r){
             item = i;
             next = r; 
         }
@@ -15,47 +15,46 @@ public class SLList {
     //public int item;
     // made it private to no mess with implementation from other classes
     /*tHE FIRST ITEM IS AT SENTINEL.next */
-    private IntNode first;
     public int size = 0;
-    private IntNode sentinel;
+    private final StuffNode<Blob> sentinel;
 
-    public SLList(int x){
-        sentinel = new IntNode(-1, null);
-        sentinel.next = new IntNode(x, null);
+    public SLList(Blob x){
+        sentinel = new StuffNode<>( null, null);
+        sentinel.next = new StuffNode<>(x, null);
         size = 1;
     }
 
     public SLList(){
         size = 0;
-        sentinel = new IntNode(-1, null);
+        sentinel = new StuffNode<>(null, null);
     }
 
     /*Adds an item to start of the list */
-    public void addFirst(int num){
-        sentinel.next = new IntNode(num, sentinel.next);
+    public void addFirst(Blob num){
+        sentinel.next = new StuffNode<Blob>(num, sentinel.next);
         size++;
     }
 
     /*Gets the first item in the list */
-    public int getFirst(){
+    public Blob getFirst(){
         return sentinel.next.item;
     }
 
     /*Gets las item in the list */
-    public void addLast(int num){
-        IntNode cursor = sentinel;
+    public void addLast(Blob num){
+        StuffNode<Blob> cursor = sentinel;
         //Reach the last element of the list
         while (cursor.next != null) {
             cursor = cursor.next;
         }
         //Add the item to that found.next end of the list
-        cursor.next = new IntNode(num, null);
+        cursor.next = new StuffNode<Blob>(num, null);
         size++;
     }
 
     /*Print all items in list */
     public void printList(){
-        IntNode cursor = sentinel.next;
+        StuffNode<Blob> cursor = sentinel.next;
         while (cursor != null) {
             System.out.println(cursor.item);
             cursor = cursor.next ;
@@ -64,7 +63,7 @@ public class SLList {
 
 
     /*Helper method for recursive size */
-    private static int size(IntNode list){
+    private  int size(StuffNode<Blob> list){
         if (list.next == null) {
             return 1;
         }
@@ -84,15 +83,15 @@ public class SLList {
     }*/
     // Get size of list using recursive helper method
     public int size(){
-        return size(sentinel.next);
+        return size(this.sentinel.next);
     }
 
 
     public static void main(String[] args) {
         /*Crates a list of one integer, 10 */
-        SLList A = new SLList();
+        SLList<Integer> A = new SLList<Integer>();
         A.printList();
-        SLList L = new SLList(70);
+        SLList<Integer> L = new SLList<>(70);
         L.addFirst(60);
         L.addFirst(40);
         L.addLast(80);
