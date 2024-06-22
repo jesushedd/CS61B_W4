@@ -10,8 +10,8 @@ public class GenAList <Blob>{
      */
 
     /*Creates an empty list */
-    public GenAList(int cap){
-        items = (Blob[]) new Object[cap];
+    public GenAList(int capacity){
+        items = (Blob[]) new Object[capacity];
         updateCapacity();
         size = 0;
     }
