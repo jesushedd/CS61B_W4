@@ -1,4 +1,4 @@
-public class SLList<Blob> {
+public class SLList<Blob> implements List61B<Blob>{
     private static class StuffNode<Stuff>{
     
         /*Instance variables */
@@ -97,6 +97,10 @@ public class SLList<Blob> {
     public Blob get(int n){
         return  get(sentinel.next, n );
 
+    }
+
+    public Blob getLast(){
+        return get(this.size()-1);
     }
 
 

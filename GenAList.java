@@ -1,4 +1,4 @@
-public class GenAList <Blob>{
+public class GenAList <Blob> implements List61B<Blob>{
     private int size;
     private Blob[] items;
     private int capacity;
