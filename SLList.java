@@ -1,13 +1,13 @@
 public class SLList<Blob> {
-    private class StuffNode<Stuff>{
+    private static class StuffNode<Stuff>{
     
         /*Instance variables */
         public Stuff item;
-        public StuffNode<Blob> next;
+        public StuffNode<Stuff> next;
         
         
         /*Constructor for IntNode */
-        public StuffNode(Stuff i, StuffNode<Blob> r){
+        public StuffNode(Stuff i, StuffNode<Stuff> r){
             item = i;
             next = r; 
         }
@@ -19,7 +19,7 @@ public class SLList<Blob> {
     private final StuffNode<Blob> sentinel;
 
     public SLList(Blob x){
-        sentinel = new StuffNode<>( null, null);
+        sentinel = new StuffNode<>(null, null);
         sentinel.next = new StuffNode<>(x, null);
         size = 1;
     }
@@ -86,19 +86,33 @@ public class SLList<Blob> {
         return size(this.sentinel.next);
     }
 
+    /*Recursive helper get method, returns nth item*/
+    private Blob get(StuffNode<Blob> node , int n){
+        if (n == 0){
+            return node.item;
+        }
+        return get(node.next, n - 1);
+    }
+    /*Returns nth item*/
+    public Blob get(int n){
+        return  get(sentinel.next, n );
+
+    }
+
 
     public static void main(String[] args) {
         /*Crates a list of one integer, 10 */
-        SLList<Integer> A = new SLList<Integer>();
+        SLList<String> A = new SLList<String>();
         A.printList();
-        SLList<Integer> L = new SLList<>(70);
-        L.addFirst(60);
-        L.addFirst(40);
-        L.addLast(80);
+        SLList<String> L = new SLList<>("70");
+        L.addFirst("60");
+        L.addFirst("40");
+        L.addLast("80");
         //System.out.println(L.getFirst());
         L.printList();
         System.out.println("size of shis list is: " + L.size());
         System.out.println("size of shis list is (USING FASTER METHOD): " + L.size);
+        System.out.println(L.get(1));
 
 
 
