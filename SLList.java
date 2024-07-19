@@ -103,6 +103,24 @@ public class SLList<Blob> implements List61B<Blob>{
         return get(this.size()-1);
     }
 
+    public Blob removeLast(){
+        //get to second to last  node
+        StuffNode<Blob> cursor = sentinel.next;
+        if (cursor.next == null){
+            return cursor.item;
+        }
+        while (cursor.next.next != null) {
+            cursor = cursor.next;
+        }
+        //save that last node
+        StuffNode<Blob> lastNode = cursor.next;
+
+        //delete last node, make the second to node item, the new last node
+        cursor.next = null;
+        //return last item
+        return lastNode.item;
+    }
+
 
     public static void main(String[] args) {
         /*Crates a list of one integer, 10 */
